@@ -17,11 +17,6 @@ chain = None
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     model = Ollama(model="gemma:2b")
-
-    # prompt = ChatPromptTemplate.from_messages([
-    #     ("system", "You are a very helpful assistant who provides accurate and eloquent answers to questions using the context below {result}"),
-    #     ("human", "{question}")
-    # ])
     openai_api_key = os.environ["OPENAI_API_KEY"]
     search_instance = CrewSearch(openai_api_key)
     app.state.context = search_instance.run_search("technology")
@@ -33,7 +28,6 @@ async def lifespan(app: FastAPI):
 
     prompt = PromptTemplate.from_template(template) 
     app.state.chain = LLMChain(prompt=prompt, llm=model)
-    # app.state.chain = prompt | model | StrOutputParser()
     yield
     model.clear()
 

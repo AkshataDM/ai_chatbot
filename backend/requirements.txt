@@ -4,4 +4,3 @@ uvicorn
 streamlit
 langchain-community
 crewai
-duckduckgo-search
