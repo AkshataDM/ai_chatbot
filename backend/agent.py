@@ -46,6 +46,7 @@ class CrewSearch:
 
 if __name__ == "__main__":
     openai_api_key = ""
+    openai_api_key = os.environ["OPENAI_API_KEY"]  # get the key from environment variables
     search_instance = CrewSearch(openai_api_key)
     result = search_instance.run_search()
     print(result)
