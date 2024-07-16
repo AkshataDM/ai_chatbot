@@ -1,2 +1,5 @@
 backend/__pycache__/*
 frontend/__pycache__/*
+
+# Ignore glp-agentic directory
+glp-agentic/
